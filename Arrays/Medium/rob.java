@@ -6,7 +6,7 @@ public class rob {
     }
     static int max(int[] a)
     {
-        
+        return -1;
     }
     
 }

@@ -1,42 +1,51 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class spiral1 {
+public class spiral2 {
     public static void main(String[] args) {
-        int[][] a ={{1,2,3},{4,5,6},{7,8,9}};
-        List<Integer> ans= printspiral(a);
-        System.out.println(ans);
+        int[][] ans = printspiral(3);
+        for (int[] a : ans) {
+            for (int i : a) {
+                System.out.print(i);
+                
+            }
+            System.out.println();
+            
+        }   
     }
-    static List<Integer> printspiral(int[][] a)
+    static int[][] printspiral(int n)
     {
-        List<Integer> ans = new ArrayList<>();
-        if(a== null || a.length==0)
+        if(n==0)
         {
-            return ans;
+            return new int[0][0];
         }
-        int m= a.length;
-        int n = a[0].length;
+        int[][] ans = new int[n][n];
+        
+        
         int top=0;
-        int bottom=m-1;
+        int bottom=n-1;
         int left=0;
         int right = n-1;
+        int c=1;
         while(top<=bottom && left<=right )
         {
             for(int i = left;i<=right;i++)
             {
-                ans.add(a[top][i]);
+                ans[top][i] = c;
+                c++;
             }
             top++;
             for(int i = top;i<=bottom;i++)
             {
-                ans.add(a[i][right]);
+                ans[i][right]=c;
+                c++;
+
             }
             right--;
             if(top<=bottom)
             {
                     for(int i=right;i>=left;i--)
                     {
-                        ans.add(a[bottom][i]);
+                        ans[bottom][i]=c;
+                        c++;
+
                     }
             }
             bottom--;
@@ -44,7 +53,9 @@ public class spiral1 {
             {
                 for(int i=bottom;i>=top;i--)
                 {
-                    ans.add(a[i][left]);
+                    ans[i][left]=c;
+                    c++;
+
                 }
             }
             left++;
@@ -52,5 +63,5 @@ public class spiral1 {
         }
         return ans;
 
-    }    
+    }   
 }
